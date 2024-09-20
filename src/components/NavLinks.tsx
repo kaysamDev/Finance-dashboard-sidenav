@@ -88,13 +88,13 @@ export const NavLinks = () => {
             className={`flex items-center p-2 group-hover:pr-2 ${
               i.active
                 ? "bg-gray-200 text-gray-800 font-semibold rounded-md"
-                : "bg-transparent text-black font-normal hover:bg-gray-100 text-gray-800"
+                : "bg-transparent text-black font-normal hover:bg-gray-100 text-gray-800 rounded-md"
             }`}
           >
             <div className="pr-4">{i.icon}</div>
-            {i.text}
+            <div className="hidden group-hover:block">{i.text}</div>
             {i.rightText && (
-              <div className="text-center bg-green-500 text-white rounded-full w-4 ml-auto">
+              <div className="text-center bg-green-500 text-white rounded-full w-4 ml-auto hidden group-hover:block">
                 {i.rightText}
               </div>
             )}
@@ -109,12 +109,12 @@ export const NavLinks = () => {
             onClick={() => handleNavigationClick(i.text)}
             className={`flex items-center p-2 group-hover:pr-2 ${
               i.active
-                ? "bg-gray-200 text-gray-800 font-semibold"
-                : "bg-transparent text-black font-normal hover:bg-gray-100 text-gray-800"
+                ? "bg-gray-200 text-gray-800 font-semibold rounded-md"
+                : "bg-transparent text-black font-normal hover:bg-gray-100 text-gray-800 rounded-md"
             }`}
           >
             <div className="pr-4">{i.icon}</div>
-            {i.text}
+            <div className="hidden group-hover:block">{i.text}</div>
           </button>
         ))}
       </div>

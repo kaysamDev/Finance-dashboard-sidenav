@@ -11,9 +11,19 @@ body {
 }
 
 img {
-  @apply max-w-full;
+  @apply w-full;
 }
 /* sidenav */
 .sideNav {
-  @apply w-[65px] h-dvh m-4 bg-white rounded-2xl p-4 transition-all duration-300 ease-in-out cursor-pointer overflow-hidden;
+  @apply w-[70px] h-dvh m-4 bg-white rounded-2xl px-4 transition-all duration-300 ease-in-out cursor-pointer overflow-x-hidden overflow-y-auto;
+}
+
+/* Custom scrollbar hiding */
+.sideNav::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.sideNav {
+  -ms-overflow-style: none; /* For IE and Edge */
+  scrollbar-width: none; /* For Firefox */
 }
