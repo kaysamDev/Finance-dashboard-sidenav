@@ -2,7 +2,6 @@ import {
   BellIcon,
   ChartColumnBigIcon,
   ChartNoAxesCombinedIcon,
-  FileTextIcon,
   LayoutDashboardIcon,
   MessageCircleQuestionIcon,
   MessageSquareIcon,
@@ -66,8 +65,12 @@ const links2: NavigationLinks[] = [
 ];
 
 export const NavLinks = () => {
-  const [navigations, setNavigations] = useState<NavigationLinks[]>(links);
+  const [navigations, setNavigations] = useState<NavigationLinks[]>([
+    ...links,
+    ...links2,
+  ]);
 
+  // Handle navigation click
   const handleNavigationClick = (text: string) => {
     const updatedNavigations = navigations.map((nav) =>
       nav.text === text ? { ...nav, active: true } : { ...nav, active: false }
@@ -78,39 +81,39 @@ export const NavLinks = () => {
   return (
     <>
       <div className="flex flex-col gap-2">
-        {links.map((i: NavigationLinks) => (
+        {navigations.slice(0, links.length).map((i: NavigationLinks) => (
           <button
             key={i.text}
             onClick={() => handleNavigationClick(i.text)}
-            style={{
-              backgroundColor: i.active ? "#e0e0e0" : "transparent",
-              color: i.active ? "#333" : "#000",
-              fontWeight: i.active ? "600" : "400",
-            }}
-            className="flex item-center gap-2 p-2"
+            className={`flex items-center p-2 group-hover:pr-2 ${
+              i.active
+                ? "bg-gray-200 text-gray-800 font-semibold rounded-md"
+                : "bg-transparent text-black font-normal hover:bg-gray-100 text-gray-800"
+            }`}
           >
-            <div>{i.icon}</div>
+            <div className="pr-4">{i.icon}</div>
             {i.text}
-            <div className="text-center bg-green-500 text-white rounded-full w-4">
-              {i.rightText}
-            </div>
+            {i.rightText && (
+              <div className="text-center bg-green-500 text-white rounded-full w-4 ml-auto">
+                {i.rightText}
+              </div>
+            )}
           </button>
         ))}
       </div>
 
-      <div className="mt-12">
-        {links2.map((i: NavigationLinks) => (
+      <div className="mt-12 flex flex-col gap-2">
+        {navigations.slice(links.length).map((i: NavigationLinks) => (
           <button
             key={i.text}
             onClick={() => handleNavigationClick(i.text)}
-            style={{
-              backgroundColor: i.active ? "#e0e0e0" : "transparent",
-              color: i.active ? "#333" : "#000",
-              fontWeight: i.active ? "600" : "400",
-            }}
-            className="flex item-center gap-2 p-2"
+            className={`flex items-center p-2 group-hover:pr-2 ${
+              i.active
+                ? "bg-gray-200 text-gray-800 font-semibold"
+                : "bg-transparent text-black font-normal hover:bg-gray-100 text-gray-800"
+            }`}
           >
-            <div>{i.icon}</div>
+            <div className="pr-4">{i.icon}</div>
             {i.text}
           </button>
         ))}

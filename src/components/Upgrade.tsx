@@ -3,7 +3,7 @@ import { ZapIcon } from "lucide-react";
 export const Upgrade = () => {
   return (
     <>
-      <div className="bg-black mt-4 rounded-2xl flex flex-col items-center text-center p-2">
+      <div className="bg-black mt-4 rounded-2xl flex-col items-center text-center p-2 hidden group-hover:flex">
         <div>
           <ZapIcon className="bg-gray-100 rounded-full size-8 p-2" />
         </div>
